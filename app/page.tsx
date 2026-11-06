@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import CopyEmail from "@/components/CopyEmail";
+import ContactForm from "@/components/ContactForm";
 import { DownloadIcon, GitHubIcon, LinkedInIcon, MailIcon } from "@/components/Icons";
 import {
   profile,
@@ -257,10 +258,11 @@ export default function Home() {
         {/* Contact */}
         <section id="contact">
           <h2 className="section-title">Get in Touch</h2>
+          <div className="contact-grid">
           <div className="card contact">
             <p className="lede">
               Interested in working together, or want to talk about security, data engineering or a
-              project? Reach out by email or on LinkedIn, or see my code on GitHub.
+              project? Send a message here, or reach me by email, on LinkedIn or on GitHub.
             </p>
             <div className="contact-rows">
               <div className="contact-row">
@@ -286,6 +288,10 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="card">
+            <ContactForm />
+          </div>
           </div>
         </section>
       </main>
