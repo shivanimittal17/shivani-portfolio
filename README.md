@@ -20,22 +20,26 @@ Push this folder to a new GitHub repository, then import that repository at http
 
 ## Contact form
 
-The form works in two modes:
+The form posts to `/api/contact` (`app/api/contact/route.ts`), which emails the message to Shivani over SMTP using nodemailer. The visitor sees a "Message sent successfully!" or "Failed to send message" notice.
 
-- **Without a key:** "Send Message" opens the visitor's email app with the message filled in.
-- **With a key:** messages are delivered straight to Shivani's inbox through [Web3Forms](https://web3forms.com).
+It only sends once the SMTP settings are added to the Vercel project:
 
-To turn on direct delivery:
-
-1. Go to https://web3forms.com and enter `shivanimittal1705@gmail.com` to get a free access key by email.
-2. In Vercel, open the project, then Settings, then Environment Variables.
-3. Add `NEXT_PUBLIC_WEB3FORMS_KEY` with the key as its value.
+1. In Shivani's Google account, turn on 2-Step Verification (Security settings).
+2. Still in Security, open **App passwords** and create one (any name, for example "portfolio"). Google shows a 16-character password.
+3. In Vercel, open the project, then Settings, then Environment Variables, and add these:
+   - `SMTP_HOST` = `smtp.gmail.com`
+   - `SMTP_PORT` = `465`
+   - `SMTP_USER` = `shivanimittal1705@gmail.com`
+   - `SMTP_PASS` = the 16-character app password, typed without spaces
+   - `EMAIL_TO` (optional) = where messages should arrive; defaults to the email in `lib/data.ts`
 4. Redeploy from the Deployments tab.
+
+Messages are sent from her own Gmail to her own inbox. Replying to one replies to the visitor.
 
 ## Editing
 
 - Text, projects, certifications and links: `lib/data.ts`
 - Photo: replace `public/shivani.jpg` (keep the same filename). Use a portrait image around 1000px wide.
 - Resume: replace `public/Shivani-Mittal-Resume.pdf` (keep the same filename).
-- Colors: the variables at the top of `app/globals.css` (`--accent` is the blue).
+- Colors: the variables at the top of `app/globals.css` (`--accent` is the rose pink).
 - Page title and description: `app/layout.tsx`

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { navItems, profile } from "@/lib/data";
 import { DownloadIcon, GitHubIcon, LinkedInIcon } from "./Icons";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Nav() {
   const [current, setCurrent] = useState("home");
@@ -52,6 +53,7 @@ export default function Nav() {
           ))}
         </nav>
         <div className="nav-tools">
+          <ThemeToggle />
           <a
             className="icon-link"
             href={profile.github}
